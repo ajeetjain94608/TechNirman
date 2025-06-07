@@ -1,14 +1,23 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
   Typography,
   Button,
   Container,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Box,
 } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
 import ThemeRegistry from "./ThemeRegistry";
 import { CartProvider } from "./CartContext";
@@ -30,29 +39,34 @@ const rajdhani = Rajdhani({
   variable: '--font-rajdhani',
 });
 
-export const metadata: Metadata = {
-  title: "TECHNIRMAN - E-Waste Solutions & Affordable Electronics",
-  description:
-    "TECHNIRMAN collects, tests, and resells used electronic components to reduce e-waste and make electronics affordable in India.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
+
+  const navLinks = [
+    { label: "About", href: "/about" },
+    { label: "Marketplace", href: "/marketplace" },
+    { label: "Sell (Organizations)", href: "/sell-org" },
+    { label: "Sell (Individuals)", href: "/sell-ind" },
+    { label: "Contact", href: "/contact" },
+    { label: "Cart", href: "/cart", color: "secondary" },
+  ];
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable}`}>
         <ThemeRegistry>
           <CartProvider>
             <AppBar position="static" color="default" elevation={1}>
-              <Toolbar>
+              <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: { xs: 1, sm: 2 } }}>
                 <Typography
                   variant="h3"
                   color="secondary"
                   sx={{
-                    flexGrow: 1,
                     fontWeight: 900,
                     fontFamily: 'var(--font-rajdhani), Rajdhani, Roboto, Helvetica, Arial, sans-serif',
                     letterSpacing: 6,
@@ -67,6 +81,7 @@ export default function RootLayout({
                       letterSpacing: 10,
                       textShadow: '0 8px 48px #ff00c8cc, 0 2px 24px #00eaffcc',
                     },
+                    fontSize: { xs: 24, sm: 32, md: 40 },
                   }}
                 >
                   <Link
@@ -76,24 +91,42 @@ export default function RootLayout({
                     TECHNIRMAN
                   </Link>
                 </Typography>
-                <Button color="primary" component={Link} href="/about">
-                  About
-                </Button>
-                <Button color="primary" component={Link} href="/marketplace">
-                  Marketplace
-                </Button>
-                <Button color="primary" component={Link} href="/sell-org">
-                  Sell (Organizations)
-                </Button>
-                <Button color="primary" component={Link} href="/sell-ind">
-                  Sell (Individuals)
-                </Button>
-                <Button color="primary" component={Link} href="/contact">
-                  Contact
-                </Button>
-                <Button color="secondary" component={Link} href="/cart" sx={{ ml: 2, fontWeight: 700 }}>
-                  Cart
-                </Button>
+                {/* Desktop Nav */}
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+                  {navLinks.map((nav) => (
+                    <Button
+                      key={nav.label}
+                      component={Link}
+                      href={nav.href}
+                      color={nav.color === 'secondary' ? 'secondary' : 'primary'}
+                      sx={{ fontWeight: nav.color === 'secondary' ? 700 : 500, ml: nav.color === 'secondary' ? 2 : 0 }}
+                    >
+                      {nav.label}
+                    </Button>
+                  ))}
+                </Box>
+                {/* Mobile Nav */}
+                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton edge="end" color="inherit" aria-label="menu" onClick={handleDrawerToggle}>
+                    <MenuIcon />
+                  </IconButton>
+                  <Drawer
+                    anchor="right"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    PaperProps={{ sx: { width: 240 } }}
+                  >
+                    <List>
+                      {navLinks.map((nav) => (
+                        <ListItem key={nav.label} disablePadding>
+                          <ListItemButton component={Link} href={nav.href} onClick={handleDrawerToggle}>
+                            <ListItemText primary={nav.label} primaryTypographyProps={{ fontWeight: nav.color === 'secondary' ? 700 : 500, color: nav.color === 'secondary' ? 'secondary.main' : 'inherit' }} />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Drawer>
+                </Box>
               </Toolbar>
             </AppBar>
             <Container maxWidth="lg" sx={{ py: 4 }}>

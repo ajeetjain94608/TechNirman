@@ -35,6 +35,38 @@ a {
   text-decoration: none;
 }
 
+/* Responsive tweaks for navigation and layout */
+@media (max-width: 900px) {
+  .MuiToolbar-root {
+    flex-wrap: wrap;
+    min-height: 56px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+  .MuiContainer-root {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .MuiToolbar-root {
+    min-height: 48px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .MuiContainer-root {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .MuiToolbar-root {
+    min-height: 40px !important;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
