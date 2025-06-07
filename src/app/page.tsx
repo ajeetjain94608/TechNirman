@@ -32,48 +32,48 @@ export default function Home() {
           color: 'primary.main',
           borderRadius: 5,
           boxShadow: 12,
-          p: { xs: 6, md: 12 },
-          mb: 10,
+          p: { xs: 2, sm: 3, md: 8 },
+          mb: { xs: 4, md: 10 },
           position: 'relative',
           overflow: 'hidden',
           background: 'radial-gradient(ellipse at 60% 40%, #00eaff33 0%, #0a192f 80%)',
           transition: 'background 0.7s cubic-bezier(.4,2,.6,1)',
         }}
       >
-        <BlurOnIcon sx={{ position: 'absolute', top: 20, right: 40, fontSize: 180, opacity: 0.12, color: '#ff00c8' }} />
-        <Box flex={1} mb={{ xs: 4, md: 0 }}>
-          <Typography variant="h1" fontWeight={900} gutterBottom sx={{ letterSpacing: 4, textShadow: '0 8px 64px #00eaff44', color: 'secondary.main', fontSize: { xs: 36, md: 64 } }}>
+        <BlurOnIcon sx={{ position: 'absolute', top: 10, right: 10, fontSize: { xs: 80, md: 180 }, opacity: 0.12, color: '#ff00c8' }} />
+        <Box flex={1} mb={{ xs: 4, md: 0 }} minWidth={0}>
+          <Typography variant="h1" fontWeight={900} gutterBottom sx={{ letterSpacing: 2, textShadow: '0 8px 64px #00eaff44', color: 'secondary.main', fontSize: { xs: 28, sm: 36, md: 64 }, wordBreak: 'break-word' }}>
             The Future of E-Waste is Circular
           </Typography>
-          <Typography variant="h4" fontWeight={700} mb={4} sx={{ maxWidth: 700, color: 'white', textShadow: '0 2px 24px #00eaff22' }}>
+          <Typography variant="h4" fontWeight={700} mb={3} sx={{ maxWidth: { xs: '100%', md: 700 }, color: 'white', textShadow: '0 2px 24px #00eaff22', fontSize: { xs: 18, sm: 22, md: 32 } }}>
             TECHNIRMAN is building India&#39;s first AI-powered, transparent, and scalable e-waste marketplace. We turn discarded electronics into opportunity, profit, and a cleaner planet.
           </Typography>
-          <Typography variant="h5" fontWeight={400} mb={4} sx={{ maxWidth: 600 }}>
+          <Typography variant="h5" fontWeight={400} mb={3} sx={{ maxWidth: { xs: '100%', md: 600 }, fontSize: { xs: 15, sm: 18, md: 24 } }}>
             Buy &amp; sell used electronics, support sustainability, and make tech affordable for all.<br/>
             <span style={{ color: '#00eaff', fontWeight: 700 }}>Platform Independent:</span> Use TECHNIRMAN from any device, OS, or browser—no app install needed.
           </Typography>
-          <Box display="flex" gap={3}>
-            <Button component={Link} href="/marketplace" variant="contained" color="secondary" size="large" startIcon={<RocketLaunchIcon />} sx={{ fontWeight: 900, fontSize: 22, px: 5, py: 2 }}>
+          <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} gap={2}>
+            <Button component={Link} href="/marketplace" variant="contained" color="secondary" size="large" startIcon={<RocketLaunchIcon />} sx={{ fontWeight: 900, fontSize: { xs: 16, sm: 20, md: 22 }, px: 4, py: 1.5, width: { xs: '100%', sm: 'auto' } }}>
               Explore Marketplace
             </Button>
-            <Button component={Link} href="/sell-org" variant="outlined" color="primary" size="large" sx={{ fontWeight: 900, fontSize: 22, px: 5, py: 2, borderWidth: 2 }}>
+            <Button component={Link} href="/sell-org" variant="outlined" color="primary" size="large" sx={{ fontWeight: 900, fontSize: { xs: 16, sm: 20, md: 22 }, px: 4, py: 1.5, borderWidth: 2, width: { xs: '100%', sm: 'auto' } }}>
               Sell Old Components
             </Button>
           </Box>
         </Box>
-        <Box flex={1} display="flex" justifyContent="center" alignItems="center">
-          <Avatar sx={{ bgcolor: 'white', width: 220, height: 220, boxShadow: 12, border: '6px solid #00eaff' }}>
-            <PublicIcon sx={{ color: 'primary.main', fontSize: 160 }} />
+        <Box flex={1} display="flex" justifyContent="center" alignItems="center" mt={{ xs: 4, md: 0 }}>
+          <Avatar sx={{ bgcolor: 'white', width: { xs: 120, sm: 180, md: 220 }, height: { xs: 120, sm: 180, md: 220 }, boxShadow: 12, border: '4px solid #00eaff' }}>
+            <PublicIcon sx={{ color: 'primary.main', fontSize: { xs: 70, sm: 120, md: 160 } }} />
           </Avatar>
         </Box>
       </Box>
 
       {/* Investor Pitch Section */}
-      <Box mb={8}>
-        <Typography variant="h4" fontWeight={800} color="secondary.main" mb={2}>
+      <Box mb={{ xs: 4, md: 8 }}>
+        <Typography variant="h4" fontWeight={800} color="secondary.main" mb={2} sx={{ fontSize: { xs: 22, sm: 28, md: 34 } }}>
           Why Invest in TECHNIRMAN?
         </Typography>
-        <Box display="flex" flexWrap="wrap" gap={4}>
+        <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap={3}>
           <Card elevation={6} sx={{ flex: 1, minWidth: 260, bgcolor: 'rgba(255,255,255,0.95)', borderRadius: 4 }}>
             <CardContent>
               <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -111,7 +111,7 @@ export default function Home() {
       </Box>
 
       {/* Value Propositions */}
-      <Box display="flex" flexWrap="wrap" gap={4} mb={8}>
+      <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap={3} mb={{ xs: 4, md: 8 }}>
         <Card elevation={2} sx={{ flex: 1, minWidth: 220, bgcolor: 'rgba(10,25,47,0.95)', color: 'primary.main', border: '2px solid #00eaff', borderRadius: 4, boxShadow: '0 4px 32px 0 #00eaff44', transition: 'all 0.4s cubic-bezier(.4,2,.6,1)', '&:hover': { boxShadow: '0 8px 48px 0 #ff00c844', borderColor: '#ff00c8', transform: 'scale(1.04)' } }}>
           <CardContent>
             <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -148,7 +148,7 @@ export default function Home() {
       </Box>
 
       {/* Main Actions */}
-      <Box display="flex" flexWrap="wrap" gap={4}>
+      <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap={3}>
         <Box flex={1} minWidth={280}>
           <Card elevation={6} sx={{ border: '2px solid #00eaff', borderRadius: 4, bgcolor: 'rgba(10,25,47,0.95)', color: 'primary.main', boxShadow: '0 4px 32px 0 #00eaff44', transition: 'all 0.4s cubic-bezier(.4,2,.6,1)', '&:hover': { boxShadow: '0 8px 48px 0 #ff00c844', borderColor: '#ff00c8', transform: 'scale(1.04)' } }}>
             <CardContent>
