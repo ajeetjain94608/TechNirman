@@ -17,7 +17,7 @@ export default function CartPage() {
         <Typography color="text.secondary">Your cart is empty.</Typography>
       ) : (
         <>
-          {cart.map((item, idx) => (
+          {cart.map((item) => (
             <Box key={item.name} display="flex" alignItems="center" gap={2} mb={2} p={2} bgcolor="#181828" borderRadius={2}>
               <img src={item.img} alt={item.name} style={{ width: 80, height: 60, objectFit: 'contain', background: '#fff', borderRadius: 8 }} />
               <Box flex={1}>

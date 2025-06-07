@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Typography, Card, CardContent, CardMedia, Button, IconButton, TextField } from '@mui/material';
+import { Box, Typography, Card, CardContent, CardMedia, IconButton, TextField } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useCart } from '../CartContext';
 
